@@ -1,6 +1,6 @@
 import * as React from "react"
 import { ChakraProvider } from "@chakra-ui/react"
-import { Textarea, Link, Text, Heading, Box, Code } from "@chakra-ui/react"
+import { Textarea, Link, Text, Heading, Box } from "@chakra-ui/react"
 
 
 function Copyright() {
@@ -48,10 +48,11 @@ class Transformer extends React.Component {
       items.forEach(item => {
         const [name, value] = item.split(":");
         map[name] = value;
+
       });
 
       if (result[map.dimensions] === undefined) result[map.dimensions] = "";
-      result[map.dimensions] += `waypoint:${map.name}:H:${map.x}:${map.y}:${map.z}:${Math.floor(Math.random() * 16)}:${!map.enabled}:type:set:rotate_on_tp:tp_yaw:global\n`;
+      result[map.dimensions] += `waypoint:${map.name}:${String(map.name).charAt(0)}:${map.x}:${map.y}:${map.z}:${Math.floor(Math.random() * 16)}:${!map.enabled}:0:gui.xaero_default:false:0:false\n`;
     });
 
     this.setState({ final: result });
